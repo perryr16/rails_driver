@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'faraday'
 gem 'figaro'
+gem 'simplecov', require: false, group: :test
 
 group :development, :test do
   gem 'webdrivers'

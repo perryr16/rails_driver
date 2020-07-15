@@ -75,3 +75,5 @@ function addMerchantCreateHandler(button, input) {
     })
   })
 }
+
+

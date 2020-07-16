@@ -7,10 +7,12 @@ function merchantListItem(merchant, linkPrefix) {
   return merchant_element
 }
 
-function merchantHeader(merchant) {
+function merchantHeader(merchant, merchantRevenue) {
   let name = merchant.attributes.name
+  let revenue = merchantRevenue
   let merchant_element = `
     <h1><a href='/merchants/${merchant.id}'>${name}</a></h1>
+    <p>Revenue: ${revenue} </p>
   `
   return merchant_element
 }
@@ -36,10 +38,16 @@ function loadAllMerchants(container) {
   })
 }
 
+let merchantRevenue = function (merchantId) {
+  fetch(`http://localhost:3000/api/v1/merchants/${merchantId}/revenue`)
+    .then(response => response.json())
+    .then(data => { merchantRevenue = data.data.attributes.revenue })
+}
+
 function loadMerchant(merchant_id, container) {
   let uri = `/api/v1/merchants/${merchant_id}`
   loadResource(uri, function(merchant){
-    merchant_element = merchantHeader(merchant, '/merchants/')
+    merchant_element = merchantHeader(merchant, merchantRevenue, '/merchants/')
     container.append(merchant_element)
   })
 }
@@ -75,3 +83,5 @@ function addMerchantCreateHandler(button, input) {
     })
   })
 }
+
+

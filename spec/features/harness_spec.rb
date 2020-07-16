@@ -42,6 +42,7 @@ RSpec.describe 'Spec Harness' do
       end
 
       it 'can create and delete an item' do
+ 
         name = "Shiny Itemy Item"
         description = "It does a lot of things real good"
         unit_price = 5011.96
@@ -124,7 +125,6 @@ RSpec.describe 'Spec Harness' do
         }
 
         json = JSON.parse(response.body, symbolize_names: true)
-
         expect(json[:data][:id]).to eq('42')
 
         expected_attributes.each do |attribute, value|
@@ -135,7 +135,6 @@ RSpec.describe 'Spec Harness' do
       it 'can get all merchants' do
         response = conn('/api/v1/merchants').get
         json = JSON.parse(response.body, symbolize_names: true)
-
         expect(json[:data].length).to eq(100)
         json[:data].each do |merchant|
           expect(merchant[:type]).to eq("merchant")
@@ -198,6 +197,7 @@ RSpec.describe 'Spec Harness' do
     it 'can get items for a merchant' do
       response = conn('/api/v1/merchants/99/items').get
       json = JSON.parse(response.body, symbolize_names: true)
+  
       expected_ids =
       [
         2397, 2398, 2399, 2400, 2401, 2402, 2403, 2404, 2405, 2406,

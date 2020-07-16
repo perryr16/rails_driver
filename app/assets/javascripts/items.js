@@ -18,7 +18,7 @@ function itemCard(item, merchant) {
 
 function loadAllItems(container) {
   let uri = "/api/v1/items"
-  loadMultipleResources(uri, function(item){
+  loadMultipleResources(uri, function (item) {
     card = itemCard(item)
     container.append(card)
   })
@@ -39,11 +39,10 @@ function loadItem(item_id, itemContainer) {
   })
 }
 
-
 function loadMerchantItems(merchant_id, container) {
   let uri = `/api/v1/merchants/${merchant_id}/items`
-  loadMultipleResources(uri, function(item){
-    item_element = itemCard(item, merchName)
+  loadMultipleResources(uri, function (item) {
+    item_element = itemCard(item)
     container.append(item_element)
   })
 }

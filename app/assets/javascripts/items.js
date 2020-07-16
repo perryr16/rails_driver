@@ -3,7 +3,6 @@ function itemCard(item, merchant) {
   let description = item.attributes.description
   let unit_price = item.attributes.unit_price
 
-  // loadMerchant(item.attributes.merchant_id, $("#merchant_name"))
   let card = `
     <div class="card">
       <div class="card-body">
@@ -46,19 +45,5 @@ function loadMerchantItems(merchant_id, container) {
   loadMultipleResources(uri, function(item){
     item_element = itemCard(item, merchName)
     container.append(item_element)
-  })
-}
-
-function loadMerchant(merchant_id) {
-  let uri = `/api/v1/merchants/${merchant_id}`
-  loadResource(uri, function (merchant) {
-    return merchant_element = merchantHeader(merchant, '/merchants/')
-  })
-}
-
-function loadOneMerchant(merchant_id) {
-  let uri = `/api/v1/merchants/${merchant_id}`
-  loadResource(uri, function(merchant){
-    merchant_element = merchantHeader(merchant, '/merchants/')
   })
 }

@@ -25,17 +25,17 @@ function loadAllItems(container) {
   })
 }
 
-let merchName = function (item_id) {
+let merchantName = function (item_id) {
   fetch(`http://localhost:3000/api/v1/items/${item_id}/merchant`)
     .then(response => response.json())
-    .then(merchantData => { merchName = merchantData.data.attributes.name })
+    .then(merchantData => { merchantName = merchantData.data.attributes.name })
 }
 
 function loadItem(item_id, itemContainer) {
   let uri = `/api/v1/items/${item_id}`
   // let mName = merchName(item_id)
   loadResource(uri, function(item){
-    card = itemCard(item, merchName)
+    card = itemCard(item, merchantName)
     itemContainer.append(card)
   })
 }
